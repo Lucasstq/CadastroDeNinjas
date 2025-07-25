@@ -1,5 +1,6 @@
-package dev.java10x.CadastroDeNinjas;
-
+package dev.java10x.CadastroDeNinjas.ninjas.controller.services;
+import java.util.List;
+import dev.java10x.CadastroDeNinjas.missoes.MissoesModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,9 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+    @ManyToOne // muitos ninjas para uma missao
+    @JoinColumn(name = "missoes_id") //junção de uma tabela com a outra, fazendo uma nova coluna na tabela, chave estrangeira
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
