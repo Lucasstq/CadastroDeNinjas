@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class Controller {
 
-    @GetMapping("/boasvindas") //puxar informações
+    @GetMapping("/boasvindas") //Mapear uma requisição HTTP GET para um método
     public String boasVindas(){
         return "Essa é minha primeira API";
     }
