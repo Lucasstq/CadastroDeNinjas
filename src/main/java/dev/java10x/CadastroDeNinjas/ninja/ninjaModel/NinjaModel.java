@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.ninja.ninjaModel;
 
+import dev.java10x.CadastroDeNinjas.missoes.missoesModel.MissoesModel;
 import jakarta.persistence.*;
 
 @Entity //cria uma entidade para o nosso banco de dados
@@ -15,6 +16,10 @@ public class NinjaModel {
     private String email;
 
     private int idade;
+
+    @ManyToOne //muitos ninjas para uma missao
+    @JoinColumn(name = "missoes_id") //juntando uma tabela com outra com o nome missoes_id
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
