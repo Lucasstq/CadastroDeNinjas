@@ -16,12 +16,15 @@ public class NinjaModel {
 
     @Id //marca minha variavel como um id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //diz como vai gerar meus ids
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
+
     @Column(unique = true) //para que possamos identificar um ninja com alguma característica precisa
     private String email;
-
+    @Column(name = "idade")
     private int idade;
 
     @ManyToOne //muitos ninjas para uma missao
