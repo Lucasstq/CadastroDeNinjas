@@ -19,7 +19,7 @@ public class NinjaModel {
     private Long id;
 
     private String nome;
-
+    @Column(unique = true) //para que possamos identificar um ninja com alguma característica precisa
     private String email;
 
     private int idade;
