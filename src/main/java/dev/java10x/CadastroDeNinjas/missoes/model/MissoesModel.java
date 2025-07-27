@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeNinjas.missoes.missoesModel;
+package dev.java10x.CadastroDeNinjas.missoes.model;
 
 import dev.java10x.CadastroDeNinjas.ninja.ninjaModel.NinjaModel;
 import jakarta.persistence.*;
