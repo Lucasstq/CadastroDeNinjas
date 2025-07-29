@@ -27,7 +27,7 @@ public class Controller {
     }
 
     // Procurar ninja por id  (Read)
-    @GetMapping("/procurarid")
+    @GetMapping("/procurarID")
     public String mostrarNinjasPorId(){
         return "Ninja por ID: ";
     }
