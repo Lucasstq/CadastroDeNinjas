@@ -1,15 +1,20 @@
 package dev.java10x.CadastroDeNinjas.ninja.controller;
 
+import dev.java10x.CadastroDeNinjas.ninja.ninjaModel.NinjaModel;
+import dev.java10x.CadastroDeNinjas.ninja.services.NinjaServices;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController //marcar classes como controladores Rest
 @RequestMapping("ninjas") //mapear URLs específicas para métodos dentro dos controladores
 public class Controller {
 
-    //Serve para mostrar
-    @GetMapping("/boasvindas")
-    public String boasvindas() {
-        return "Cadastro de Ninjas";
+    // injetar dependencia do meu service
+    private NinjaServices ninjaServices;
+
+    public Controller(NinjaServices ninjaServices) {
+        this.ninjaServices = ninjaServices;
     }
 
     //Criar endpoints (requisições)
@@ -22,13 +27,13 @@ public class Controller {
 
     // Mostrar todos os ninjas (Read)
     @GetMapping("/todos")
-    public String mostrarTodosOsNinjas() {
-        return "Ninjas: ";
+    public List<NinjaModel> listarTodosNinjas() {
+        return ninjaServices.listarTodosNinjas();
     }
 
     // Procurar ninja por id  (Read)
     @GetMapping("/procurarID")
-    public String mostrarNinjasPorId(){
+    public String mostrarNinjasPorId() {
         return "Ninja por ID: ";
     }
 
