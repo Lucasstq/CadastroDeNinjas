@@ -3,7 +3,7 @@ package dev.java10x.CadastroDeNinjas.ninja.controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController //marcar classes como controladores Rest
-@RequestMapping //mapear URLs específicas para métodos dentro dos controladores
+@RequestMapping("ninjas") //mapear URLs específicas para métodos dentro dos controladores
 public class Controller {
 
     //Serve para mostrar
