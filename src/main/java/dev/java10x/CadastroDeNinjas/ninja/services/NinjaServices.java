@@ -5,6 +5,7 @@ import dev.java10x.CadastroDeNinjas.ninja.repository.NinjaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //marcando a classe como um service
 @Service
@@ -19,6 +20,12 @@ public class NinjaServices {
     //Listar todos meus ninjas
     public List<NinjaModel> listarTodosNinjas() {
         return ninjaRepository.findAll();
+    }
+
+    //Listar Ninjas por id
+    public NinjaModel buscarPorId(Long id) {
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
+        return ninjaPorId.orElse(null);
     }
 
 }
