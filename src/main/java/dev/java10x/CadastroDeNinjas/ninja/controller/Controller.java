@@ -20,9 +20,9 @@ public class Controller {
     //Criar endpoints (requisições)
 
     // Adicionar um ninja  (Create)
-    @PostMapping("/adicionar")
-    public String cadastrarNinja() {
-        return "Ninja Criado";
+    @PostMapping("/cadastrar")
+    public NinjaModel cadastrarNinja(@RequestBody NinjaModel ninja) {
+        return ninjaServices.cadastrarNinja(ninja);
     }
 
     // Mostrar todos os ninjas (Read)
