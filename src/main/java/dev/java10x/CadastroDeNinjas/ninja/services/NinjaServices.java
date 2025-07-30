@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 //marcando a classe como um service
 @Service
@@ -22,14 +23,17 @@ public class NinjaServices {
     }
 
     //Listar todos meus ninjas
-    public List<NinjaModel> listarTodosNinjas() {
-        return ninjaRepository.findAll();
+    public List<NinjaDto> listarTodosNinjas() {
+        List<NinjaModel> ninjas = ninjaRepository.findAll(); //buscar todos os registros da tabela de ninjas.
+        return ninjas.stream() //transforma a lista em um stream
+                .map(ninjaMapper::map)  //para cada ninjaModel ele aplica o metodo map do meu ninjaMapper para transformar o model em DTO
+                .collect(Collectors.toList()); //converte a stream novamente para lista
     }
 
     //Listar Ninjas por id
-    public NinjaModel buscarPorId(Long id) {
+    public NinjaDto buscarPorId(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-        return ninjaPorId.orElse(null);
+        return ninjaPorId.map(ninjaMapper::map).orElse(null);
     }
 
     //Adicionar novo Ninja
@@ -39,19 +43,23 @@ public class NinjaServices {
     }
 
     //deletar ninja
-    public NinjaModel deletarporID(Long id) {
+    public NinjaDto deletarporID(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
         if (ninjaPorId.isPresent()) {
             ninjaRepository.deleteById(id);
+            return ninjaMapper.map(ninjaPorId.get());
         }
-        return ninjaPorId.orElse(null);
+        return null;
     }
 
     // Atualizar ninja
-    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtualizado) {
-        if (ninjaRepository.existsById(id)) {
-            ninjaAtualizado.setId(id);
-            return ninjaRepository.save(ninjaAtualizado);
+    public NinjaDto atualizarNinja(Long id, NinjaDto ninjaDTO) {
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
+        if (ninjaPorId.isPresent()) {
+            NinjaModel ninjaAtual = ninjaMapper.map(ninjaDTO);
+            ninjaAtual.setId(id);
+            NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtual);
+            return ninjaMapper.map(ninjaSalvo);
         }
         return null;
     }

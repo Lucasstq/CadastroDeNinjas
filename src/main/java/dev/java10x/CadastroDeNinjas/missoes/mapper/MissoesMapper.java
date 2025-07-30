@@ -4,7 +4,7 @@ import dev.java10x.CadastroDeNinjas.missoes.dto.MissoesDto;
 import dev.java10x.CadastroDeNinjas.missoes.model.MissoesModel;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component //marca a classe como um mapper
 public class MissoesMapper {
 
     public MissoesModel map(MissoesDto missoesDto) {
