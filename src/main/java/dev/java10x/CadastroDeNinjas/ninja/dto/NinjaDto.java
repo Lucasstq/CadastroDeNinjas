@@ -1,7 +1,6 @@
 package dev.java10x.CadastroDeNinjas.ninja.dto;
 
 import dev.java10x.CadastroDeNinjas.missoes.model.MissoesModel;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

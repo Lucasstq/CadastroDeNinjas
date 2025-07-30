@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.missoes.controller;
 
+import dev.java10x.CadastroDeNinjas.missoes.mapper.MissoesMapper;
 import dev.java10x.CadastroDeNinjas.missoes.model.MissoesModel;
 import dev.java10x.CadastroDeNinjas.missoes.services.MissoesServices;
 import org.springframework.web.bind.annotation.*;
