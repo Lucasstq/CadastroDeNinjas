@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.missoes.controller;
 
+import dev.java10x.CadastroDeNinjas.missoes.dto.MissoesDto;
 import dev.java10x.CadastroDeNinjas.missoes.mapper.MissoesMapper;
 import dev.java10x.CadastroDeNinjas.missoes.model.MissoesModel;
 import dev.java10x.CadastroDeNinjas.missoes.services.MissoesServices;
@@ -18,7 +19,7 @@ public class MissoesController {
     }
 
     @PostMapping("/cadastrar") //anotação para o usuario mandar algo
-    public MissoesModel cadastrarMissoes(@RequestBody MissoesModel missoes) {
+    public MissoesDto cadastrarMissoes(@RequestBody MissoesDto missoes) {
         return missoesServices.cadastrarMissao(missoes);
     }
 
