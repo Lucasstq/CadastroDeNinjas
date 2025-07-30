@@ -1,5 +1,7 @@
 package dev.java10x.CadastroDeNinjas.ninja.services;
 
+import dev.java10x.CadastroDeNinjas.ninja.dto.NinjaDto;
+import dev.java10x.CadastroDeNinjas.ninja.mapper.NinjaMapper;
 import dev.java10x.CadastroDeNinjas.ninja.ninjaModel.NinjaModel;
 import dev.java10x.CadastroDeNinjas.ninja.repository.NinjaRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class NinjaServices {
     //conectar a camada de serviço com a camada de repositório (injeção de dependências)
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaServices(NinjaRepository ninjaRepository) {
+    public NinjaServices(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //Listar todos meus ninjas
@@ -29,8 +33,9 @@ public class NinjaServices {
     }
 
     //Adicionar novo Ninja
-    public NinjaModel cadastrarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDto cadastrarNinja(NinjaDto ninja) {
+        NinjaModel ninjaModel = ninjaMapper.map(ninja); //meu ninja model sendo mapeado recebendo o valor do ninja DTO
+        return ninjaMapper.map(ninjaRepository.save(ninjaModel)); //e o map vai mapear que o ninja repository vai salvar meu ninja model
     }
 
     //deletar ninja
