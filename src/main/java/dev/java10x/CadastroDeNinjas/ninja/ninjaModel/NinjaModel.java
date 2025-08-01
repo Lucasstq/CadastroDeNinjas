@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Entity //cria uma entidade para o nosso banco de dados
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //cria construtores automaticamente com o uso do lombok
 @AllArgsConstructor
 @Data //cria os getters e setters com o uso do lombok
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id //marca minha variavel como um id
