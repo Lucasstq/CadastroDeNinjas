@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("missoes") //mapear HTTP
 public class MissoesController {
 
-    MissoesServices missoesServices;
+    private final MissoesServices missoesServices;
 
     public MissoesController(MissoesServices missoesServices) {
         this.missoesServices = missoesServices;

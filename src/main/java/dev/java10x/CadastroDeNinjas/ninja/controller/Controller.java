@@ -13,7 +13,7 @@ import java.util.List;
 public class Controller {
 
     // injetar dependencia do meu service
-    private NinjaServices ninjaServices;
+    private final NinjaServices ninjaServices;
 
     public Controller(NinjaServices ninjaServices) {
         this.ninjaServices = ninjaServices;

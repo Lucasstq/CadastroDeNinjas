@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaServices {
     //conectar a camada de serviço com a camada de repositório (injeção de dependências)
-    private NinjaRepository ninjaRepository;
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
     public NinjaServices(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
