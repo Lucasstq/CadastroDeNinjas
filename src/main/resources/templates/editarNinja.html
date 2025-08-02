@@ -1,0 +1,99 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Ninja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 48%;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-cancel {
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Editar Ninja</h2>
+    <form th:action="@{'/ninjas/ui/atualizar/' + ${ninja.id}}" method="post" th:object="${ninja}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required />
+
+        <label for="img">URL da Imagem:</label>
+        <input type="text" id="img" th:field="*{img}" required />
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" th:field="*{idade}" required />
+
+        <label for="ranking">Ranking:</label>
+        <input type="text" id="ranking" th:field="*{ranking}" />
+
+        <label for="missão">Missão</label>
+        <input type="number" id="missão" th:field="*{missoes}" />
+
+
+
+        <div class="buttons">
+            <button type="submit" class="btn-save">Salvar</button>
+            <a th:href="@{/ninjas/ui/todos}" class="btn-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

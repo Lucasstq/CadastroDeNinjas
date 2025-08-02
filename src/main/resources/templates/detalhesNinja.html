@@ -1,0 +1,138 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Detalhes do Ninja</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            color: #333;
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #343a40;
+            color: white;
+        }
+
+        thead th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        /* Imagens */
+        td img {
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            object-fit: cover;
+        }
+
+        /* Botões padrão */
+        a {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 2px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-size: 14px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Botão Alterar */
+        a:nth-child(2) {
+            background-color: orange;
+        }
+
+        a:nth-child(2):hover {
+            background-color: darkorange;
+        }
+
+        /* Botão Deletar */
+        a:last-child {
+            background-color: #dc3545;
+        }
+
+        a:last-child:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+<h1>Detalhes do Ninja</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Imagem</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Ranking</th>
+        <th>Missão</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><img th:src="${ninja.img}" width="100" height="100"/></td>
+        <td th:text="${ninja.id}"></td>
+        <td th:text="${ninja.nome}"></td>
+        <td th:text="${ninja.idade}"></td>
+        <td th:text="${ninja.email}"></td>
+        <td th:text="${ninja.ranking}"></td>
+        <td>
+            <span th:if="${ninja.missoes}">
+                Nome: <span th:text="${ninja.missoes.nome}"></span>,
+                Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span>
+            </span>
+            <span th:if="${ninja.missoes == null}">
+                Sem Missões cadastradas para o Ninja
+            </span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a th:href="@{/ninjas/ui/todos}" style="background-color: gray;">Voltar</a>
+    <a th:href="@{/ninjas/ui/editar/{id}(id=${ninja.id})}" style="background-color: orange;">Alterar</a>
+    <a th:href="@{/ninjas/ui/deletarporID/{id}(id=${ninja.id})}" style="background-color: #dc3545;">Deletar</a>
+</div>
+</body>
+</html>
